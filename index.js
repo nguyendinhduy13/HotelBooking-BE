@@ -29,7 +29,8 @@ app.use((req, res, next) => {
 async function StartApp() {
   const router = require("./src/routers/index");
   router(app);
-  
+
+  //get ipv4 and update at be and fe
   // const api = require("./src/config/api");
   // const ipv4 = await api.UpdateAPI_URL();
 
