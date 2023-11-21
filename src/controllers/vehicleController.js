@@ -21,34 +21,6 @@ const AddNewVehicle = async (req, res) => {
   res.status(200).send(vehicle);
 };
 
-const UpdateVehicle = async (req, res) => {
-  try{
-  const {
-    name,
-    brand,
-    specification,
-    price,
-    image,
-    hotel_id,
-    description,
-  } = req.body;
-  const vehicle = await Vehicle.findByIdAndUpdate(
-    req.params.id,
-    {
-      name,
-      brand,
-      specification,
-      price,
-      image,
-      hotel_id,
-      description,
-    }
-  );
-  res.status(200).json({ success: true, data: vehicle });
-} catch (error) {
-  res.status(500).json({ success: false, message: error.message });
-}
-}
 
 const DeleteVehicle = async (req, res) => {
   try {
