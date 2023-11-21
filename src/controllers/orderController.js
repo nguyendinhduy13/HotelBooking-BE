@@ -45,7 +45,17 @@ const AddNewOrder = async (req, res) => {
   }
 };
 
-
+const GetAllOrders = async (req, res) => {
+  try {
+    const orders = await Order.find()
+      .populate("id_user", "name email phone_number type tokenNotification")
+      .populate("id_room")
+      .populate("id_vehicle");
+    res.status(200).json({ success: true, data: orders });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
 
 const GetOrderByIdHotel = async (req, res) => {
   try {
