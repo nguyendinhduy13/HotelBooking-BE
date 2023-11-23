@@ -52,6 +52,16 @@ const addMessage = async (req, res, next) => {
   }
 };
 
+const deleteMessage = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const data = await Message.findByIdAndDelete(id);
+    if (data) return res.json({ msg: "Message deleted successfully." });
+    else return res.json({ msg: "Failed to delete message from the database" });
+  } catch (error) {
+    next(ex);
+  }
+};
 
 const getAllMessages = async (req, res, next) => {
   try {
