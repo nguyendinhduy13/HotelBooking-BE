@@ -30,17 +30,17 @@ async function StartApp() {
   const router = require("./src/routers/index");
   router(app);
 
-  //get ipv4 and update at be and fe
+  // get ipv4 and update at be and fe
   // const api = require("./src/config/api");
   // const ipv4 = await api.UpdateAPI_URL();
 
-  const server = app.listen(config.PORT, () => {
-    console.log(`Server is running on port ${config.PORT}`);
+  const server = app.listen(config, () => {
+    console.log(`Server is running on port ${config}`);
   });
 
   const io = socket(server, {
     cors: {
-      origin: "http://localhost:7102",
+      origin: "http://localhost:3000",
       methods: "GET,POST,PUT,DELETE",
       credentials: true,
     },
