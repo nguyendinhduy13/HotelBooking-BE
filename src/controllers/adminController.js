@@ -109,16 +109,6 @@ const checkLogin = async (req, res) => {
   });
 };
 
-const checkLoginTest = async (req, res) => {
-  var admin = await Admin.findOne({ email: req.auth.email });
-  res.status(200).send({
-    message: "Welcome 🙌 ",
-    data: {
-      admin: admin,
-    },
-  });
-};
-
 const GetAllAdmin = async (req, res) => {
   var admins = await Admin.find();
   admins?.map(async (admin) => {
