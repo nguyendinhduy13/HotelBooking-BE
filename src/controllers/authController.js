@@ -107,6 +107,16 @@ const GetAllUser = async (req, res) => {
   });
 };
 
+const GetAllUserTest = async (req, res) => {
+  const users = await User.find().populate("orders");
+  res.status(200).send({
+    message: "Get all user successfully",
+    data: {
+      users: users,
+    },
+  });
+};
+
 const GetSingleUser = async (req, res) => {
   try {
     var user = await User.findById(req.params.id).populate("orders");
