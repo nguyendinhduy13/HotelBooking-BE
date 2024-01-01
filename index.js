@@ -34,9 +34,14 @@ async function StartApp() {
   // const api = require("./src/config/api");
   // const ipv4 = await api.UpdateAPI_URL();
 
-  const server = app.listen(config, () => {
-    console.log(`Server is running on port ${config}`);
-  });
+  // const server = app.listen(config, () => {
+  //   console.log(`Server is running on port ${config}`);
+  // });
+
+  const port = config.PORT || 3000; // Use PORT from env, default to 3000
+  const server = app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
 
   const io = socket(server, {
     cors: {
