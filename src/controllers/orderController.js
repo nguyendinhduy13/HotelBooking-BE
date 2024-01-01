@@ -172,7 +172,7 @@ const GetOrderByDate = async (req, res) => {
       if (
         check_inDate >= startDate &&
         check_inDate <= endDate &&
-        order.paymented
+        order.status === "Completed"
       ) {
         data.push(order);
       }
@@ -202,7 +202,7 @@ const GetOrderHotelByDate = async (req, res) => {
       if (
         check_inDate >= startDate &&
         check_inDate <= endDate &&
-        order.paymented
+        order.status === "Completed"
       ) {
         data.push(order);
       }
@@ -551,7 +551,7 @@ const GetOrderByQuarter = async (req, res) => {
 const ClearAllOrder = async (req, res) => {
   try {
     const users = await User.find();
-    
+
     users.forEach(async (user) => {
       user.orders = [];
       await user.save();
